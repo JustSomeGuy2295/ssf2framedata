@@ -25,5 +25,5 @@ The code will always be available for the public, and as per the license include
 
 ## Privacy Policy
 
-No personal information is read, gathered, or stored by the bot or the developers.\n
+No personal information is read, gathered, or stored by the bot or the developers.
 Use of the bot requires a Discord account, and the [privacy policy for Discord](https://discord.com/privacy) must be observed.
