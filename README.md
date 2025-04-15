@@ -1,8 +1,8 @@
-# Mentorbot 3.0
+# SSF2 Framedata
 
 A custom Discord app by written with [discord.py](https://github.com/Rapptz/discord.py), based on [mentorbot](https://github.com/blair-c/Mentorbot3.0).
 
-[Add to your own Discord server]().
+[Add to your own Discord server](https://discord.com/oauth2/authorize?client_id=1349718416956588083).
 
 ## Universal Features
 
@@ -10,18 +10,13 @@ A custom Discord app by written with [discord.py](https://github.com/Rapptz/disc
 
 Provides quick hitbox references for any move in the game, covering the movesets of all 47 characters.
 
-![Using the Ichigo forward tilt hitbox command]()
+![Using the Bandana Dee forward tilt hitbox command](readme/hitbox.png)
 
 ### Informational Commands
 
 SSF2 Frame Data includes a growing list of informational and reference commands, from in-game stats to competitive strategy guides.
 
 ![/formulas command displaying Rivals' knockback, hitstun, and hitpause formulas](readme/game-formulas.png)
-
-### `/invite`
-Created to drastically speed up the Steam matchmaking process, allowing users to seamlessly invite other members without leaving Discord. Uses Redis Database to persistently store links between users’ Discord and Steam accounts.
-
-![Two ways to use /invite](readme/invite.png)
 
 ## Terms and Conditions
 
