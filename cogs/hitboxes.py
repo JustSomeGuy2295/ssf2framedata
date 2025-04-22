@@ -34,6 +34,12 @@ class GIFSpeed(Button):
             await interaction.response.send_message("You're not allowed to use this button.", ephemeral=True)
 
 def ssf2_hitbox(char: str, move: str, user: discord.User):
+    '''
+    The function used by the character commands to collect the data required
+    
+    Returns:
+        A discord embed
+    '''
     con = sqlite3.connect("C:/Users/jesas/Documents/SSF2/ssf2framadata.com/ssf2framedata-master/data/academy.db")
     cur = con.cursor()
 
@@ -79,7 +85,13 @@ def ssf2_hitbox(char: str, move: str, user: discord.User):
         embeds.append(embed)
 
     # Creating buttons
-    # Slowmo button
+    '''
+    As of now there is no satisfactory way to collect GIFs
+    CE hitbox frames are not all centred correctly
+    1.3.1.1 training mod doesn't work to the full capacity wanted
+    Modding the game myself hasn't worked properly
+
+    # Slowmo button    
     if row[7]:
             fullspeed_embed = embed.copy()
             fullspeed_embed.set_image(url=row[7])
@@ -89,6 +101,9 @@ def ssf2_hitbox(char: str, move: str, user: discord.User):
             slow_embed = embed.copy()
             slow_embed.set_image(url=row[15])
             view.add_item(GIFSpeed("Slow", slow_embed, user))
+
+    '''
+
     # Hits buttons
     for idx, embed in enumerate(embeds):
         if hits[idx]:
