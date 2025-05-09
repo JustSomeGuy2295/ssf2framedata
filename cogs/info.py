@@ -50,7 +50,6 @@ class Info(commands.Cog):
     async def di_max_angles(self, interaction: discord.Interaction):
         '''The DI direction which will give you the maximum angle change'''
         embed = discord.Embed(
-            Title = 'The best DI for a given knockback angle',
             description=
             '`337° to 22°  :  Up & Down `\n'
             '` 22° to 23°  :  Down & Down+Away`\n'
