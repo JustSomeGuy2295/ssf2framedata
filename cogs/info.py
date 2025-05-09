@@ -46,6 +46,23 @@ class Info(commands.Cog):
         embed.set_thumbnail(url='https://i.imgur.com/ScoQwQk.png')
         await interaction.response.send_message(embed=embed)
 
+    @app_commands.command(name='angles')
+    async def di_max_angles(self, interaction: discord.Interaction):
+        '''The DI direction which will give you the maximum angle change'''
+        embed = discord.Embed(
+            Title = 'The best DI for a given knockback angle',
+            description=
+            '`337° to 22°  :  Up & Down `\n'
+            '` 22° to 23°  :  Down & Down+Away`\n'
+            '` 23° to 44°  :  Down+Away`\n'
+            '` 45°         :  Down+Away & Up+In`\n'
+            '` 46° to 67°  :  Up+In`\n'
+            '` 67° to 68°  :  In & Up+In`\n'
+            '` 68° to 112° :  In & Away`'
+            )
+        embed.set_author(name='The best DI for a given knockback angle')
+        await interaction.response.send_message(embed=embed)
+    
     @app_commands.command(name='formulas')
     async def formulas_kb_hs_hp(self, interaction: discord.Interaction):
         """SSF2 Formulas for knockback, hitstun, etc"""
@@ -63,7 +80,7 @@ class Info(commands.Cog):
              'Base_Hitpause + (Hitpause_Scaling × Percent_After_Hit × 0.05) + Extra_Hitpause```'))
         embed.set_author(name='Rivals Formulas')
         await interaction.response.send_message(content=link, embed=embed)
-        
+    
     @app_commands.command(name='meteorsmash')
     async def meteor_info(self, interaction: discord.Interaction):
         """Gives info about meteor smashes in SSF2"""
