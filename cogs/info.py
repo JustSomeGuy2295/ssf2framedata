@@ -51,13 +51,7 @@ class Info(commands.Cog):
         '''The DI direction which will give you the maximum angle change'''
         embed = discord.Embed(
             description=
-            '`337° to 22°  :  Up & Down `\n'
-            '` 22° to 23°  :  Down & Down+Away`\n'
-            '` 23° to 44°  :  Down+Away`\n'
-            '` 45°         :  Down+Away & Up+In`\n'
-            '` 46° to 67°  :  Up+In`\n'
-            '` 67° to 68°  :  In & Up+In`\n'
-            '` 68° to 112° :  In & Away`'
+            '```py\n337° to 22°  :  Up & Down \n 22° to 23°  :  Down & Down+Away\n 23° to 44°  :  Down+Away\n 45°         :  Down+Away & Up+In\n 46° to 67°  :  Up+In\n 67° to 68°  :  In & Up+In\n 68° to 112° :  In & Away```'
             )
         embed.set_author(name='The best DI for a given knockback angle')
         await interaction.response.send_message(embed=embed)
