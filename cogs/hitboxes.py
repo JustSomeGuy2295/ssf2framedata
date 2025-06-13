@@ -79,7 +79,7 @@ def ssf2_hitbox(char: str, move: str, user: discord.User):
         embed = discord.Embed(description=f'```py\n{desc}```', color=color)
         hit_text = f" ({hits[idx]})" if hits[idx] else ""
         embed.set_author(name=f'{char} {move}{hit_text}', icon_url=icon)
-        embed.set_footer(text='Up to date as of patch 1.3.1.2')
+        embed.set_footer(text='Up to date as of patch 1.4.0.1')
         embed.set_image(url=row[7])
 
         embeds.append(embed)
