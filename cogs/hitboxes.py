@@ -9,29 +9,65 @@ from tabulate import tabulate
 
 import sqlite3
 
-class MoveSelect(Button):
-    def __init__(self, name: str, embed: discord.Embed, user: discord.User):
-        self.embed = embed
+class HitboxView(View):
+    def __init__(self, embeds, gif_pairs, hits, user: discord.User):
+        super().__init__()
+        self.embeds = embeds  # list of discord.Embed objects
+        self.gif_pairs = gif_pairs  # list of tuples: (fullspeed_url, slowmo_url)
+        self.hits = hits
+        self.current_hit = 0
         self.user = user
+
+        # Hit buttons
+        for idx, embed in enumerate(embeds):
+            hit_name = hits[idx] if hits[idx] else f"Hit {idx+1}"
+            self.add_item(MoveSelect(hit_name, idx, self))
+
+        # GIF Speed Buttons
+        self.add_item(GIFSpeedToggle("Full Speed", True, self))
+        self.add_item(GIFSpeedToggle("Slow", False, self))
+
+    def get_current_embed(self):
+        return self.embeds[self.current_hit]
+
+    def get_current_gif(self, slowmo: bool):
+        urls = self.gif_pairs[self.current_hit]
+        return urls[1] if slowmo else urls[0]
+
+class GIFSpeedToggle(Button):
+    def __init__(self, name: str, is_fullspeed: bool, view: HitboxView):
+        self.is_fullspeed = is_fullspeed
+        self.custom_view = view
+        style = discord.ButtonStyle.blurple
+        super().__init__(label=name, style=style)
+
+    async def callback(self, interaction: discord.Interaction):
+        if interaction.user != self.custom_view.user:
+            await interaction.response.send_message("You're not allowed to use this button.", ephemeral=True)
+            return
+
+        idx = self.custom_view.current_hit
+        embed = self.custom_view.get_current_embed()
+        embed.set_image(url=self.custom_view.get_current_gif(slowmo=not self.is_fullspeed))
+        await interaction.response.edit_message(embed=embed, view=self.custom_view)
+        
+class MoveSelect(Button):
+    def __init__(self, name: str, index: int, view: HitboxView):
+        self.index = index
+        self.custom_view = view
         super().__init__(label=name, style=discord.ButtonStyle.gray)
 
     async def callback(self, interaction: discord.Interaction):
-        if self.user == interaction.user:
-            await interaction.response.edit_message(embed=self.embed)
-        else:
+        if interaction.user != self.custom_view.user:
             await interaction.response.send_message("You're not allowed to use this button.", ephemeral=True)
+            return
 
-class GIFSpeed(Button):
-    def __init__(self, name: str, embed: discord.Embed, user: discord.User):
-        self.embed = embed
-        self.user = user
-        super().__init__(label=name, style=discord.ButtonStyle.blurple)
-        
-    async def callback(self, interaction: discord.Interaction):
-        if self.user == interaction.user:
-            await interaction.response.edit_message(embed=self.embed)
-        else:
-            await interaction.response.send_message("You're not allowed to use this button.", ephemeral=True)
+        self.custom_view.current_hit = self.index
+        embed = self.custom_view.get_current_embed()
+        # Set default image to full speed
+        embed.set_image(url=self.custom_view.get_current_gif(slowmo=False))
+        await interaction.response.edit_message(embed=embed, view=self.custom_view)
+
 
 def ssf2_hitbox(char: str, move: str, user: discord.User):
     '''
@@ -60,10 +96,9 @@ def ssf2_hitbox(char: str, move: str, user: discord.User):
     con.close()
 
     embeds = []
+    gif_pairs = []  # (fullspeed_url, slowmo_url)
     hits = []
-    view = View()
 
-    # Defining embed info
     for idx, row in enumerate(hitboxes):
         hits.append(row[0])
         
@@ -77,12 +112,17 @@ def ssf2_hitbox(char: str, move: str, user: discord.User):
 
         desc = "\n".join(f"{k}: {v}" for k, v in info.items() if v is not None)
         embed = discord.Embed(description=f'```py\n{desc}```', color=color)
-        hit_text = f" ({hits[idx]})" if hits[idx] else ""
+        hit_text = f" ({row[0]})" if row[0] else ""
         embed.set_author(name=f'{char} {move}{hit_text}', icon_url=icon)
         embed.set_footer(text='Up to date as of patch 1.4.0.1')
-        embed.set_image(url=row[7])
+        embed.set_image(url=row[7])  # Default to fullspeed
 
         embeds.append(embed)
+        gif_pairs.append((row[7], row[15]))  # (fullspeed, slowmo)
+
+    view = HitboxView(embeds, gif_pairs, hits, user)
+    return embeds[0], view
+
 
     # Creating buttons
 
@@ -99,9 +139,9 @@ def ssf2_hitbox(char: str, move: str, user: discord.User):
 
     # Hits buttons
     for idx, embed in enumerate(embeds):
-        if hits[idx]:
-            view.add_item(MoveSelect(f"{hits[idx]}", embed, user))
-
+        hit_name = hits[idx] if hits[idx] else f"Hit {idx+1}"
+        self.add_item(MoveSelect(hit_name, idx, self))
+        
     return embeds[0], view
 
 class Hitboxes(commands.Cog):
