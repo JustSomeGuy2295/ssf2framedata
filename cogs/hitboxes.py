@@ -18,14 +18,14 @@ class HitboxView(View):
         self.current_hit = 0
         self.user = user
 
+        # GIF Speed Buttons
+        self.add_item(GIFSpeedToggle("Full Speed", True, self))
+        self.add_item(GIFSpeedToggle("Slow", False, self))
+        
         # Hit buttons
         for idx, embed in enumerate(embeds):
             hit_name = hits[idx] if hits[idx] else f"Hit {idx+1}"
             self.add_item(MoveSelect(hit_name, idx, self))
-
-        # GIF Speed Buttons
-        self.add_item(GIFSpeedToggle("Full Speed", True, self))
-        self.add_item(GIFSpeedToggle("Slow", False, self))
 
     def get_current_embed(self):
         return self.embeds[self.current_hit]
