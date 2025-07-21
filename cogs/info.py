@@ -73,7 +73,7 @@ class Info(commands.Cog):
             '\n**Hitpause** ```ml\n'
              'Base_Hitpause + (Hitpause_Scaling × Percent_After_Hit × 0.05) + Extra_Hitpause```'))
         embed.set_author(name='SSF2 Formulas')
-        await interaction.response.send_message(content=link, embed=embed)
+        await interaction.response.send_message(embed=embed)
     
     @app_commands.command(name='meteorsmash')
     async def meteor_info(self, interaction: discord.Interaction):
@@ -94,23 +94,23 @@ class Info(commands.Cog):
         """Information about teching"""
         embed = discord.Embed(description=
             # Tech on surface
-            ('**Tech on Surface**'
+            ('**Tech on Surface**\n'
             'There is a 10 frame buffer to allow you to tech. \n'
-            'Going out of hitstun resets the buffer window.'
+            'Going out of hitstun resets the buffer window.\n'
             # Tech lockout
-            '\n**Tech Lockout**'
+            '\n**Tech Lockout**\n'
             'After attempting a tech and failing you are unable to tech for 12 frames'
             # Ground Bounce
-            '\n**Ground Bounce**'
+            '\n**Ground Bounce**\n'
             'When missing the tech on a meteor smash you will bounce on the stage while still being in hitstun. The window to tech the bounce is 1 frame.'
 
             # Wall Tech
             '\n**Wall Tech**'
-            'Wall techs recover instantly, if teching off a wall gravity takes effect immediately.'
+            '\nWall techs recover instantly, if teching off a wall gravity takes effect immediately.'
             )
         )
         embed.set_author(name='Universal Teching Frame Data')
-        await interaction.response.send_message(content=link, embed=embed)
+        await interaction.response.send_message(embed=embed)
 
     # Misc.
 #    @app_commands.command(name='troubleshoot')
