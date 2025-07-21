@@ -99,10 +99,10 @@ class Info(commands.Cog):
             'Going out of hitstun resets the buffer window.\n'
             # Tech lockout
             '\n**Tech Lockout**\n'
-            'After attempting a tech and failing you are unable to tech for 12 frames'
+            'After attempting a tech and failing you are unable to tech for 12 frames\n'
             # Ground Bounce
             '\n**Ground Bounce**\n'
-            'When missing the tech on a meteor smash you will bounce on the stage while still being in hitstun. The window to tech the bounce is 1 frame.'
+            'When missing the tech on a meteor smash you will bounce on the stage while still being in hitstun. The window to tech the bounce is 1 frame.\n'
 
             # Wall Tech
             '\n**Wall Tech**'
