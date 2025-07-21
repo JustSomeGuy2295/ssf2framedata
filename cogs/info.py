@@ -59,10 +59,11 @@ class Info(commands.Cog):
     @app_commands.command(name='formulas')
     async def formulas_kb_hs_hp(self, interaction: discord.Interaction):
         """SSF2 Formulas for knockback, hitstun, etc"""
-        link = 'https://rivals.academy/library/glossary/#knockback'
         embed = discord.Embed(description=
+            (
+            '**NOT CHANGED TO REFLECT SSF2 FRAMEDATA**'
             # Knockback
-            ('**Knockback** ```ml\n'
+            '\n**Knockback** ```ml\n'
              'BKB + (KB_Scaling × Percent_After_Hit × KB_Adj × 0.12)```'
             # Hitstun
             '\n**Hitstun** ```ml\n'
@@ -71,7 +72,7 @@ class Info(commands.Cog):
             # Hitpause
             '\n**Hitpause** ```ml\n'
              'Base_Hitpause + (Hitpause_Scaling × Percent_After_Hit × 0.05) + Extra_Hitpause```'))
-        embed.set_author(name='Rivals Formulas')
+        embed.set_author(name='SSF2 Formulas')
         await interaction.response.send_message(content=link, embed=embed)
     
     @app_commands.command(name='meteorsmash')
@@ -88,70 +89,35 @@ class Info(commands.Cog):
         embed.set_image(url='https://i.imgur.com/ljVnFpg.png')
         await interaction.response.send_message(embed=embed)
 
-    @app_commands.command(name='angleflippers')
-    async def angle_flippers(self, interaction: discord.Interaction):
-        """List of angle flipper definitions"""
-        link = 'https://rivals.academy/library/glossary/#angle-flippers'
-        definitions = ('```glsl\n'
-            '0 - Sends at the exact knockback angle every time\n'
-            '1 - Sends away from the center of the attacker or projectile\n'
-            '2 - Sends toward the center of the attacker or projectile\n'
-            '3 - Horizontal knockback sends away from the center of the hitbox\n'
-            '4 - Horizontal knockback sends toward the center of the hitbox\n'
-            '5 - Horizontal knockback is reversed\n'
-            '6 - Horizontal knockback sends away from the center of the attacker or projectile\n'
-            '7 - Horizontal knockback sends toward the center of the attacker or projectile\n'
-            '8 - Sends away from the center of the hitbox\n'
-            '9 - Sends toward the center of the hitbox\n'
-            '10 - Sends in the direction the attacker is moving```')
-        embed = discord.Embed(title='Angle Flipper Definitions', description=definitions)
-        await interaction.response.send_message(content=link, embed=embed)
-    
     @app_commands.command(name='teching')
     async def teching(self, interaction: discord.Interaction):
-        """Teching frame data comparison"""
-        link = 'https://rivals.academy/library/glossary/#teching'
+        """Information about teching"""
         embed = discord.Embed(description=
-            # Tech In Place
-            ('**Tech In Place** ```ml\n'
-            'Intangible | 1-14       \n'
-            'Endlag     | 4          \n'
-            'FAF        | 19```'
-            # Tech Roll
-            '\n**Tech Roll** ```ml\n'
-            'Intangible | 1-20    \n'
-            'Endlag     | 14      \n'
-            'FAF        | 35```'
-            # Missed (Hitstun)
-            '\n**Missed (Hitstun)** ```ml\n'
-            'Endlag | 13            \n'
-            'FAF    | 14```'
-            # Missed (Tumble)
-            '\n**Missed (Tumble)** ```ml\n'
-            'Endlag | 7             \n'
-            'FAF    | 8```'
+            # Tech on surface
+            ('**Tech on Surface**'
+            'There is a 10 frame buffer to allow you to tech. \n'
+            'Going out of hitstun resets the buffer window.'
+            # Tech lockout
+            '\n**Tech Lockout**'
+            'After attempting a tech and failing you are unable to tech for 12 frames'
+            # Ground Bounce
+            '\n**Ground Bounce**'
+            'When missing the tech on a meteor smash you will bounce on the stage while still being in hitstun. The window to tech the bounce is 1 frame.'
+
             # Wall Tech
-            '\n**Wall Tech** ```ml\n'
-            'Intangible | 1-15    \n'
-            'FAF        | 12      \n'
-            'Airdodge/Jump Cancellable 4-11```'
-            # Ceiling Tech
-            '\n**Ceiling Tech** ```ml\n'
-            'Intangible | 1-15       \n'
-            'FAF        | 12         \n'
-            'IASA Cancellable 1-19```'))
+            '\n**Wall Tech**'
+            'Wall techs recover instantly, if teching off a wall gravity takes effect immediately.'
+            )
+        )
         embed.set_author(name='Universal Teching Frame Data')
-        embed.set_image(url='https://cdn.discordapp.com/attachments/'
-                            '376248878334214145/1160821640221962341/'
-                            'roaknockdownframedata.png')
         await interaction.response.send_message(content=link, embed=embed)
 
     # Misc.
-    @app_commands.command(name='troubleshoot')
-    async def fps_fix(self, interaction: discord.Interaction):
-        """60 fps fix instructions for Nvidia graphics cards"""
-        link = 'https://twitter.com/darainbowcuddle/status/1410724611327631364'
-        await interaction.response.send_message(link)
+#    @app_commands.command(name='troubleshoot')
+#    async def fps_fix(self, interaction: discord.Interaction):
+#        """60 fps fix instructions for Nvidia graphics cards"""
+#        link = 'https://twitter.com/darainbowcuddle/status/1410724611327631364'
+#        await interaction.response.send_message(link)
 
     @app_commands.command(name='replays')
     async def how_to_access_your_replays(self, interaction: discord.Interaction):

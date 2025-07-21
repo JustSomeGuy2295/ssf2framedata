@@ -176,30 +176,7 @@ class Hitboxes(commands.Cog):
         'Up Special', 'Neutral Special',
         'Down Special', 'Side Special',
         'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
-    ]
-
-    @app_commands.command(name='blackmage')
-    async def blackmage(self, interaction: discord.Interaction, attack: moves):
-        """Black Mage frame data and hitbox info"""
-        ssf2_embed, view = ssf2_hitbox('Black Mage', attack, interaction.user)
-        await interaction.response.send_message(embed=ssf2_embed, view=view)
-        
-    # Sonic
-    moves = Literal[
-        'Jab', 'Dash Attack',
-        'Down Tilt', 'Up Tilt', 'Forward Tilt',
-        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
-        'Down Smash', 'Up Smash', 'Forward Smash', 
-        'Up Special', 'Neutral Special',
-        'Down Special', 'Side Special',
-        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
-    ]
-
-    @app_commands.command(name='sonic')
-    async def sonic(self, interaction: discord.Interaction, attack: moves):
-        """Sonic frame data and hitbox info"""
-        ssf2_embed, view = ssf2_hitbox('Sonic', attack, interaction.user)
-        await interaction.response.send_message(embed=ssf2_embed, view=view)
+    ]   
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(Hitboxes(bot))
