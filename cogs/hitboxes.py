@@ -25,7 +25,7 @@ class HitboxView(View):
         # Hit buttons
         for idx, embed in enumerate(embeds):
             hit_name = hits[idx] if hits[idx] else f"Hit {idx+1}"
-            self.add_item(MoveSelect(hit_name, idx, self))
+            if len(hits)>1: self.add_item(MoveSelect(hit_name, idx, self))
 
     def get_current_embed(self):
         return self.embeds[self.current_hit]
