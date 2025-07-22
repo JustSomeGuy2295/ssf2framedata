@@ -111,7 +111,23 @@ class Info(commands.Cog):
         )
         embed.set_author(name='Universal Teching Frame Data')
         await interaction.response.send_message(embed=embed)
-
+        
+    @app_commands.command(name='clanking')
+    async def clanking(self, interaction: discord.Interaction):
+        """Informatino about clanking"""
+        embed = discord.Embed(description=
+            ('**Clanking**\n'
+             'If two attacks collide and the damage values are within 8% of each other both characters will recoil.\n'
+             'If the clank involves a projectile the projectile will simply be cancelled out without causing recoil.\n'
+             'Physical air attacks cannot clank with other physical attacks.\n'
+             
+             '\n**Out-Prioritizing**'
+             'When the difference in damage is greater than 8% the stronger attack cancels out the weaker attack.\n'
+             'Between physical attacks the weaker one will enter recoil, while the stronger attack will continue.\n'
+             'Between two projectiles the stronger projectile will cancel out the weaker one and continue as normal.\n'
+             'Between a projectile and physical attack a stronger projectile will simply ignore the attack, while a weaker projectile will be cancelled out without causing a clank.'
+            )                      
+        )
     # Misc.
 #    @app_commands.command(name='troubleshoot')
 #    async def fps_fix(self, interaction: discord.Interaction):
