@@ -128,6 +128,9 @@ class Info(commands.Cog):
              'Between a projectile and physical attack a stronger projectile will simply ignore the attack, while a weaker projectile will be cancelled out without causing a clank.'
             )                      
         )
+        embed.set_author(name='Universal Clanking Information')
+        await interaction.response.send_message(embed=embed)
+        
     # Misc.
 #    @app_commands.command(name='troubleshoot')
 #    async def fps_fix(self, interaction: discord.Interaction):
