@@ -167,7 +167,7 @@ class Hitboxes(commands.Cog):
         ssf2_embed, view = ssf2_hitbox('Bandana Dee', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
         
-    # Black Mage
+    # Sandbag
     moves = Literal[
         'Jab', 'Dash Attack',
         'Down Tilt', 'Up Tilt', 'Forward Tilt',
@@ -177,6 +177,12 @@ class Hitboxes(commands.Cog):
         'Down Special', 'Side Special',
         'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
     ]   
+    
+    @app_commands.command(name='sandbag')
+    async def sandbag(self, interaction: discord.Interaction, attack: moves):
+        """Sandbag frame data and hitbox info"""
+        ssf2_embed, view = ssf2_hitbox('Sandbag', attack, interaction.user)
+        await interaction.response.send_message(embed=ssf2_embed, view=view)
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(Hitboxes(bot))
