@@ -111,7 +111,7 @@ def ssf2_hitbox(char: str, move: str, user: discord.User):
         }
 
         desc = "\n".join(f"{k}: {v}" for k, v in info.items() if v is not None)
-        embed = discord.Embed(description=f'```py\n{desc}```', color=color)
+        embed = discord.Embed(description=f'```\n{desc}```', color=color)
         hit_text = f" ({row[0]})" if row[0] else ""
         embed.set_author(name=f'{char} {move}{hit_text}', icon_url=icon)
         embed.set_footer(text='Up to date as of patch 1.4.0.1')
