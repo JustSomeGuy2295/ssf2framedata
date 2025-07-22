@@ -88,7 +88,7 @@ def ssf2_hitbox(char: str, move: str, user: discord.User):
     hitboxes = cur.execute("""
         SELECT hit, startup, active, endlag, damage, faf, landing_lag, image, 
                sourspot_damage, sweetspot_damage, tipper_damage, notes,
-               intangible, invulnerable, armored, slowmo
+               intangible, invulnerable, armored, slowmo, angle
         FROM hitboxes 
         WHERE char_id=? AND move_id=?
     """, (db_char_id, db_move_id)).fetchall()
@@ -106,6 +106,7 @@ def ssf2_hitbox(char: str, move: str, user: discord.User):
             'Startup': row[1], 'Active': row[2], 'Endlag': row[3],
             'Damage': row[4], 'FAF': row[5], 'Landing Lag': row[6],
             'Sourspot Damage': row[8], 'Sweetspot Damage': row[9], 'Tipper Damage': row[10],
+            'Angle': row[16],
             'Intangible': row[12], 'Invulnerable': row[13], 'Armored': row[14],
             'Notes': row[11]
         }
@@ -121,27 +122,6 @@ def ssf2_hitbox(char: str, move: str, user: discord.User):
         gif_pairs.append((row[7], row[15]))  # (fullspeed, slowmo)
 
     view = HitboxView(embeds, gif_pairs, hits, user)
-    return embeds[0], view
-
-
-    # Creating buttons
-
-    # Slowmo button    
-    if row[7]:
-            fullspeed_embed = embed.copy()
-            fullspeed_embed.set_image(url=row[7])
-            view.add_item(GIFSpeed("Full Speed", fullspeed_embed, user))
-    # Full speed button
-    if row[15]:
-            slow_embed = embed.copy()
-            slow_embed.set_image(url=row[15])
-            view.add_item(GIFSpeed("Slow", slow_embed, user))
-
-    # Hits buttons
-    for idx, embed in enumerate(embeds):
-        hit_name = hits[idx] if hits[idx] else f"Hit {idx+1}"
-        self.add_item(MoveSelect(hit_name, idx, self))
-        
     return embeds[0], view
 
 class Hitboxes(commands.Cog):
