@@ -121,7 +121,7 @@ class Info(commands.Cog):
              'If the clank involves a projectile the projectile will simply be cancelled out without causing recoil.\n'
              'Physical air attacks cannot clank with other physical attacks.\n'
              
-             '\n**Out-Prioritizing**'
+             '\n**Out-Prioritizing**\n'
              'When the difference in damage is greater than 8% the stronger attack cancels out the weaker attack.\n'
              'Between physical attacks the weaker one will enter recoil, while the stronger attack will continue.\n'
              'Between two projectiles the stronger projectile will cancel out the weaker one and continue as normal.\n'
