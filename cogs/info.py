@@ -83,7 +83,9 @@ class Info(commands.Cog):
              'Any angle that sends between 250° and 290°.\n'
              'Any move which sends outside this range is considered a spike.\n\n'
              
-             'Meteor cancelling can be performed after 9 frames of entering hitstun (not including hitpause, hitlag, etc).'            
+             'Meteor cancelling is when a double jump or up special is performed while in hitstun from a meteor smash.'
+             'Meteor cancelling can be performed after 9 frames of entering hitstun (not including hitpause, hitlag, etc).'
+             'Attempting a meteor cancel too early results in a lockout and you cannot attempt to meteor cancel again until you leave hitstun.'            
             ))
         embed.set_author(name = 'Meteor Smash Info')
         embed.set_image(url='https://i.imgur.com/ljVnFpg.png')

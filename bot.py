@@ -19,7 +19,7 @@ class MyBot(commands.Bot):
 
     def __init__(self, *, intents: discord.Intents):
         super().__init__(
-            activity=discord.CustomActivity(name='Updating for Beta 1.4.0.1'),
+            activity=discord.CustomActivity(name='Sandbag just added!'),
             command_prefix=commands.when_mentioned,
             intents=intents
         )
