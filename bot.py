@@ -19,7 +19,7 @@ class MyBot(commands.Bot):
 
     def __init__(self, *, intents: discord.Intents):
         super().__init__(
-            activity=discord.CustomActivity(name='Sandbag just added!'),
+            activity=discord.CustomActivity(name='Kirby just added!'),
             command_prefix=commands.when_mentioned,
             intents=intents
         )
@@ -67,4 +67,4 @@ async def doabarrelroll(ctx):
     await ctx.send('https://tenor.com/view/star-fox-star-fox-64-starfox-do-a-barrel-roll-rick-may-gif-3633857843406436610')
 
 if __name__ == '__main__':
-    bot.run(getenv('TOKEN'))  # API Key from environment
+    bot.run(getenv('TESTTOKEN'))  # API Key from environment
