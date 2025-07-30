@@ -19,7 +19,7 @@ class MyBot(commands.Bot):
 
     def __init__(self, *, intents: discord.Intents):
         super().__init__(
-            activity=discord.CustomActivity(name='Ichigo just added!'),
+            activity=discord.CustomActivity(name='Captain Falcon just added!'),
             command_prefix=commands.when_mentioned,
             intents=intents
         )
@@ -61,6 +61,10 @@ async def jmac(ctx):
                     'Hey everyone, Jmac here. Paradox just said that tables and the floor are better. I disagree! The chairs are essential for the table. Maybe the floor is also good since it supports the chair! Paradox is on to something. #science\n\n'
                     'Hello guys, it\'s me jmac! captain falco says that stairs are better than chairs. While it does rhyme (which is very cool) I think chairs are better. #chai rs\n\n'
                     'Hi guys! I am jmac. Hida says that when you\'re gaming you sit on chairs. I completely agree. Who stands while gaming? Someone who doesn\'t know the true value of chairs. #purpose\n\n')
+    
+@bot.command()
+async def zashy(ctx):
+    await ctx.send('https://tenor.com/view/di-bad-bad-di-di-directional-influence-smash-gif-21670494')
 
 @bot.command()
 async def doabarrelroll(ctx):
