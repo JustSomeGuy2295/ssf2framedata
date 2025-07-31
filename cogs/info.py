@@ -42,7 +42,7 @@ class Info(commands.Cog):
         embed = discord.Embed(
             url=link,
             title='Craft\'s Framedata Directory',
-            description='Informational data collected and maintained by craftyfurry.')
+            description='Informational data collected and maintained by craftyfurry. Contains more info about each move than the bot does. Not all characters are included.')
         embed.set_thumbnail(url='https://i.imgur.com/ScoQwQk.png')
         await interaction.response.send_message(embed=embed)
 
@@ -53,7 +53,7 @@ class Info(commands.Cog):
             description=
             '```py\n337° to 22°  :  Up & Down \n 22° to 23°  :  Down & Down+Away\n 23° to 44°  :  Down+Away\n 45°         :  Down+Away & Up+In\n 46° to 67°  :  Up+In\n 67° to 68°  :  In & Up+In\n 68° to 112° :  In & Away```'
             )
-        embed.set_author(name='The best DI for a given knockback angle')
+        embed.set_author(name='The DI which will most influence the direction you\'re sent in')
         await interaction.response.send_message(embed=embed)
     
     @app_commands.command(name='formulas')
@@ -61,17 +61,16 @@ class Info(commands.Cog):
         """SSF2 Formulas for knockback, hitstun, etc"""
         embed = discord.Embed(description=
             (
-            '**NOT CHANGED TO REFLECT SSF2 FRAMEDATA**'
-            # Knockback
-            '\n**Knockback** ```ml\n'
-             'BKB + (KB_Scaling × Percent_After_Hit × KB_Adj × 0.12)```'
+            # Aura
+            '\n**Aura Multiplier** ```ml\n'
+             'When damage < 40%\n'
+             'Aura = 0.8 + damage/200\n\n'
+             'When damage < 130%\n'
+             'Aura = 1 + (damage/-40)/300\n\n'
+             'When damage > 130%\n'
+             'Aura = 1.3```'
             # Hitstun
-            '\n**Hitstun** ```ml\n'
-             'Hitstun_Multiplier × ((BKB × (KB_Adj × 2.4 + 1.6)) + '
-             '(KB_Scaling × Percent_After_Hit × KB_Adj × 0.312))```'
-            # Hitpause
-            '\n**Hitpause** ```ml\n'
-             'Base_Hitpause + (Hitpause_Scaling × Percent_After_Hit × 0.05) + Extra_Hitpause```'))
+            '\nMore formulas coming later'))
         embed.set_author(name='SSF2 Formulas')
         await interaction.response.send_message(embed=embed)
     
@@ -145,17 +144,17 @@ class Info(commands.Cog):
         """How to access your SSF2 replays"""
         embed = discord.Embed()
         embed.set_author(
-            name='How to Access Your Replays', 
+            name='How to Access Your Auto-Saved Replays', 
             icon_url=self.bot.user.display_avatar.url)
         embed.add_field(
-            name='Method 1:',
+            name='When Using Windows',
             value='1. Press `Win + R`\n'
-                  '2. Put in the following: ```%LocalAppData%\\RivalsOfAether\\replays```',
+                  '2. Put in the following: ```"C:\\Users\\%username%\\SSF2Replays"```',
             inline=False)
         embed.add_field(
-            name='Method 2:',
-            value='1. Make sure "Hidden items" are shown in File Explorer\n'
-                  '2. Go to: ```C:\\Users\\yourname\\AppData\\Local\\RivalsofAether\\replays```',
+            name='When Using ',
+            value='The location of your autosaved replays will be something like:\n'
+                  '```Mac SSD > Users > <username> > SSF2Replays```',
             inline=False)
         await interaction.response.send_message(embed=embed)
 
