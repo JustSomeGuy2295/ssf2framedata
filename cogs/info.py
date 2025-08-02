@@ -35,6 +35,17 @@ class Info(commands.Cog):
             inline=False)
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
+    @app_commands.command(name='feedback')
+    async def feedback(self, interaction: discord.Interaction):
+        """Google form which you can use to submit feedback to the developers of the bot"""
+        link = 'https://docs.google.com/forms/d/e/1FAIpQLSdaIXOACep8Rgo4YwTEuOPfs6lWYnPWXHYvYHgVpWHrxbRY2g/viewform?usp=header'
+        embed = discord.Embed(
+            url=link,
+            title='Feedback Form',
+            description='Use this link to submit feedback to the developers of the bot')
+        await interaction.response.send_message(embed=embed)
+
+
     @app_commands.command(name='craft')
     async def crafts_google_sheets(self, interaction: discord.Interaction):
         """Craft's collated framedata sheets"""
