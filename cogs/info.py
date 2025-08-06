@@ -26,7 +26,7 @@ class Info(commands.Cog):
             value='https://github.com/blair-c/Mentorbot3.0\nhttps://github.com/JustSomeGuy2295/SSF2-Framedata',
             inline=False)
         embed.add_field(
-            name='Data curated by the SSF2 Framedata team',
+            name='Data curated by the SSF2 Framedata team and craftyfurry',
             value='',
             inline=False)
         embed.add_field(
@@ -67,7 +67,7 @@ class Info(commands.Cog):
         embed.set_author(name='The DI which will most influence the direction you\'re sent in')
         await interaction.response.send_message(embed=embed)
     
-    @app_commands.command(name='formulas')
+    @app_commands.command(name='aura')
     async def formulas_kb_hs_hp(self, interaction: discord.Interaction):
         """SSF2 Formulas for knockback, hitstun, etc"""
         embed = discord.Embed(description=
@@ -80,9 +80,9 @@ class Info(commands.Cog):
              'Aura = 1 + (damage/-40)/300\n\n'
              'When damage > 130%\n'
              'Aura = 1.3```'
-            # Hitstun
-            '\nMore formulas coming later'))
+            ))
         embed.set_author(name='SSF2 Formulas')
+        embed.set_image(url='https://i.imgur.com/w0DIwDs.png')
         await interaction.response.send_message(embed=embed)
     
     @app_commands.command(name='meteorsmash')
