@@ -255,7 +255,7 @@ class Hitboxes(commands.Cog):
     ]   
     
     @app_commands.command(name='samus')
-    async def sandbag(self, interaction: discord.Interaction, attack: moves):
+    async def samus(self, interaction: discord.Interaction, attack: moves):
         """Samus frame data and hitbox info"""
         ssf2_embed, view = ssf2_hitbox('Samus', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)    
