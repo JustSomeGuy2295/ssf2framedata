@@ -69,7 +69,7 @@ class Info(commands.Cog):
     
     @app_commands.command(name='aura')
     async def formulas_kb_hs_hp(self, interaction: discord.Interaction):
-        """SSF2 Formulas for knockback, hitstun, etc"""
+        """Formula and graph of aura multiplier"""
         embed = discord.Embed(description=
             (
             # Aura
@@ -81,7 +81,7 @@ class Info(commands.Cog):
              'When damage > 130%\n'
              'Aura = 1.3```'
             ))
-        embed.set_author(name='SSF2 Formulas')
+        embed.set_author(name='Aura Multiplier Formula and Graph')
         embed.set_image(url='https://i.imgur.com/w0DIwDs.png')
         await interaction.response.send_message(embed=embed)
     

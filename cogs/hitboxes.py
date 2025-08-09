@@ -209,6 +209,23 @@ class Hitboxes(commands.Cog):
         ssf2_embed, view = ssf2_hitbox('Kirby', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
 
+    # Link
+    moves = Literal[
+        'Jab', 'Dash Attack',
+        'Down Tilt', 'Up Tilt', 'Forward Tilt',
+        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air', 'Z Aerial',
+        'Down Smash', 'Up Smash', 'Forward Smash', 
+        'Up Special', 'Neutral Special',
+        'Down Special', 'Side Special',
+        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
+    ]   
+    
+    @app_commands.command(name='link')
+    async def link(self, interaction: discord.Interaction, attack: moves):
+        """Link frame data and hitbox info"""
+        ssf2_embed, view = ssf2_hitbox('Link', attack, interaction.user)
+        await interaction.response.send_message(embed=ssf2_embed, view=view)
+
     # Mr. Game and Watch
     moves = Literal[
         'Jab', 'Dash Attack',
