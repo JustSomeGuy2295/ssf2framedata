@@ -76,7 +76,7 @@ def ssf2_hitbox(char: str, move: str, user: discord.User):
     Returns:
         A discord embed
     '''
-    con = sqlite3.connect("C:/Users/jesas/Documents/SSF2/ssf2framadata.com/ssf2framedata/data/academy.db")
+    con = sqlite3.connect("data/academy.db")
     cur = con.cursor()
 
     db_char_id = cur.execute("SELECT id FROM characters WHERE name=?", (char,)).fetchone()[0]
