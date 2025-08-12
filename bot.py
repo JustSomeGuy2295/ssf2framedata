@@ -1,4 +1,5 @@
 from os import getenv
+import json
 from sys import version
 from typing import Literal
 
@@ -70,5 +71,8 @@ async def zashy(ctx):
 async def doabarrelroll(ctx):
     await ctx.send('https://tenor.com/view/star-fox-star-fox-64-starfox-do-a-barrel-roll-rick-may-gif-3633857843406436610')
 
+with open('KEYS.json', 'r') as f:
+    tokens = json.load(f)
+
 if __name__ == '__main__':
-    bot.run(getenv('TESTTOKEN'))  # API Key from environment
+    bot.run(tokens['TESTTOKEN'])  # API Key from KEYS.json
