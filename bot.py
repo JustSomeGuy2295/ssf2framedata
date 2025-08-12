@@ -75,4 +75,4 @@ with open('KEYS.json', 'r') as f:
     tokens = json.load(f)
 
 if __name__ == '__main__':
-    bot.run(tokens['TESTTOKEN'])  # API Key from environment
+    bot.run(tokens['TOKEN'])  # API Key from environment
