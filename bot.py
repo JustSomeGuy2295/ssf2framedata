@@ -20,7 +20,7 @@ class MyBot(commands.Bot):
 
     def __init__(self, *, intents: discord.Intents):
         super().__init__(
-            activity=discord.CustomActivity(name='Link just added!'),
+            activity=discord.CustomActivity(name='Isaac just added!'),
             command_prefix=commands.when_mentioned,
             intents=intents
         )
@@ -75,4 +75,4 @@ with open('KEYS.json', 'r') as f:
     tokens = json.load(f)
 
 if __name__ == '__main__':
-    bot.run(tokens['TOKEN'])  # API Key from environment
+    bot.run(tokens['TOKEN'])  # API Key from KEYS.json
