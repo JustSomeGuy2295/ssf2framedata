@@ -29,6 +29,8 @@ class MyBot(commands.Bot):
         cogs = [
             'hitboxes',  # Frame data and hitbox commands
             'info',      # Links and info commands
+#            'servers',   # Links region servers
+            'stats'      # Gives info about character stats
         ]
         for cog in cogs:
             await self.load_extension(f'cogs.{cog}')
