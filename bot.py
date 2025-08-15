@@ -74,7 +74,14 @@ async def doabarrelroll(ctx):
     await ctx.send('https://tenor.com/view/star-fox-star-fox-64-starfox-do-a-barrel-roll-rick-may-gif-3633857843406436610')
 
 with open('KEYS.json', 'r') as f:
-    tokens = json.load(f)
+    keys = json.load(f)
+    
+@bot.event
+async def on_command_error(ctx, error):
+    channel = await bot.fetch_channel(keys['LOG'])
+    error = getattr(error, 'original', error)
+    error_message = str(error)
+    await channel.send(error_message)
 
 if __name__ == '__main__':
-    bot.run(tokens['TOKEN'])  # API Key from KEYS.json
+    bot.run(keys['TOKEN'])  # API Key from KEYS.json
