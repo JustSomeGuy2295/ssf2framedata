@@ -29,6 +29,8 @@ class MyBot(commands.Bot):
         cogs = [
             'hitboxes',  # Frame data and hitbox commands
             'info',      # Links and info commands
+#            'servers',   # Links region servers
+#            'stats'      # Gives info about character stats
         ]
         for cog in cogs:
             await self.load_extension(f'cogs.{cog}')
@@ -41,6 +43,7 @@ intents.members = True
 bot = MyBot(intents=intents)
 bot.remove_command('help')
 
+# Sync commands
 @bot.command()
 @commands.guild_only()
 @commands.is_owner()
@@ -54,7 +57,8 @@ async def sync(ctx: commands.Context, scope: Literal['global', 'guild']):
             synced = await ctx.bot.tree.sync(guild=ctx.guild)
             txt = 'to the current guild'
     await ctx.send(f'Synced {len(synced)} commands {txt}')
-    
+
+# "Hidden" commands   
 @bot.command()
 async def jmac(ctx):
     await ctx.send('Hey guys it\'s me jmac and I really like chairs. You can sit on them, like what the heck! What would we even do without chairs? #chairs\n\n'
@@ -72,7 +76,23 @@ async def doabarrelroll(ctx):
     await ctx.send('https://tenor.com/view/star-fox-star-fox-64-starfox-do-a-barrel-roll-rick-may-gif-3633857843406436610')
 
 with open('KEYS.json', 'r') as f:
-    tokens = json.load(f)
+    keys = json.load(f)
 
+# Event logging    
+@bot.event
+async def on_command_error(ctx, error):
+    err_log_channel = await bot.fetch_channel(keys['ERRORLOG'])
+    error = getattr(error, 'original', error)
+    error_message = str(error)
+    if err_log_channel:
+        await err_log_channel.send(error_message)
+
+@bot.event
+async def on_interaction(interaction: discord.Interaction):
+    cmd_log_channel = await bot.fetch_channel(keys['COMMANDLOG'])
+    if cmd_log_channel:
+        await cmd_log_channel.send(f"Slash command '{interaction.command.name}' used  in '{interaction.guild.name}'")
+        
+# Bot login
 if __name__ == '__main__':
-    bot.run(tokens['TOKEN'])  # API Key from KEYS.json
+    bot.run(keys['TOKEN'])  # API Key from KEYS.json
