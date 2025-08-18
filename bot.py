@@ -20,7 +20,7 @@ class MyBot(commands.Bot):
 
     def __init__(self, *, intents: discord.Intents):
         super().__init__(
-            activity=discord.CustomActivity(name='Isaac just added!'),
+            activity=discord.CustomActivity(name='PAC-MAN just added!'),
             command_prefix=commands.when_mentioned,
             intents=intents
         )
@@ -30,7 +30,8 @@ class MyBot(commands.Bot):
             'hitboxes',  # Frame data and hitbox commands
             'info',      # Links and info commands
 #            'servers',   # Links region servers
-#            'stats'      # Gives info about character stats
+#            'stats',     # Gives info about character stats
+#            'faq'        # Answers commonly asked questions about the bot
         ]
         for cog in cogs:
             await self.load_extension(f'cogs.{cog}')
@@ -74,6 +75,10 @@ async def zashy(ctx):
 @bot.command()
 async def doabarrelroll(ctx):
     await ctx.send('https://tenor.com/view/star-fox-star-fox-64-starfox-do-a-barrel-roll-rick-may-gif-3633857843406436610')
+    
+@bot.command()
+async def fakenews(ctx):
+    await ctx.send('@matchmaking')
 
 with open('KEYS.json', 'r') as f:
     keys = json.load(f)

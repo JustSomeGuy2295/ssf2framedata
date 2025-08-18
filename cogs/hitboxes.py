@@ -158,7 +158,7 @@ class Hitboxes(commands.Cog):
         'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
     ]
 
-    @app_commands.command(name='captain-falcon')
+    @app_commands.command(name='captainfalcon')
     async def captainfalcon(self, interaction: discord.Interaction, attack: moves):
         """Captain Falcon frame data and hitbox info"""
         ssf2_embed, view = ssf2_hitbox('Captain Falcon', attack, interaction.user)
@@ -248,7 +248,7 @@ class Hitboxes(commands.Cog):
         ssf2_embed, view = ssf2_hitbox('Mr. Game and Watch', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
         
-    # naruto
+    # Naruto
     moves = Literal[
         'Jab', 'Dash Attack',
         'Down Tilt', 'Up Tilt', 'Forward Tilt',
@@ -261,8 +261,25 @@ class Hitboxes(commands.Cog):
 
     @app_commands.command(name='naruto')
     async def naruto(self, interaction: discord.Interaction, attack: moves):
-        """Bandana Dee frame data and hitbox info"""
+        """Naruto frame data and hitbox info"""
         ssf2_embed, view = ssf2_hitbox('Naruto', attack, interaction.user)
+        await interaction.response.send_message(embed=ssf2_embed, view=view)
+        
+    # PAC-MAN
+    moves = Literal[
+        'Jab', 'Dash Attack',
+        'Down Tilt', 'Up Tilt', 'Forward Tilt',
+        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
+        'Down Smash', 'Up Smash', 'Forward Smash', 
+        'Up Special', 'Neutral Special',
+        'Down Special', 'Side Special',
+        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
+    ]
+
+    @app_commands.command(name='pacman')
+    async def pacman(self, interaction: discord.Interaction, attack: moves):
+        """PAC-MAN frame data and hitbox info"""
+        ssf2_embed, view = ssf2_hitbox('PAC-MAN', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
         
     # Samus
