@@ -2,6 +2,7 @@ from os import getenv
 import json
 from sys import version
 from typing import Literal
+import subprocess
 
 import discord
 from discord.ext import commands
@@ -20,7 +21,7 @@ class MyBot(commands.Bot):
 
     def __init__(self, *, intents: discord.Intents):
         super().__init__(
-            activity=discord.CustomActivity(name='PAC-MAN just added!'),
+            activity=discord.CustomActivity(name='Luffy just added!'),
             command_prefix=commands.when_mentioned,
             intents=intents
         )
@@ -96,7 +97,7 @@ async def on_command_error(ctx, error):
 async def on_interaction(interaction: discord.Interaction):
     cmd_log_channel = await bot.fetch_channel(keys['COMMANDLOG'])
     if cmd_log_channel:
-        await cmd_log_channel.send(f"Slash command '{interaction.command.name}' used  in '{interaction.guild.name}'")
+        await cmd_log_channel.send(f"Slash command '{interaction.command}' used  in '{interaction.guild}'")
         
 # Bot login
 if __name__ == '__main__':
