@@ -97,7 +97,7 @@ async def on_command_error(ctx, error):
 async def on_interaction(interaction: discord.Interaction):
     cmd_log_channel = await bot.fetch_channel(keys['COMMANDLOG'])
     if cmd_log_channel:
-        await cmd_log_channel.send(f"Slash command '{interaction.command}' used  in '{interaction.guild}'")
+        await cmd_log_channel.send(f"Slash command '{interaction.command.name}' used  in '{interaction.guild}'")
         
 # Bot login
 if __name__ == '__main__':
