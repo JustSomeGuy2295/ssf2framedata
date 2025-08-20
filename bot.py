@@ -31,7 +31,7 @@ class MyBot(commands.Bot):
             'hitboxes',  # Frame data and hitbox commands
             'info',      # Links and info commands
 #            'servers',   # Links region servers
-#            'stats',     # Gives info about character stats
+            'stats',     # Gives info about character stats
 #            'faq'        # Answers commonly asked questions about the bot
         ]
         for cog in cogs:
