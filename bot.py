@@ -60,7 +60,8 @@ async def sync(ctx: commands.Context, scope: Literal['global', 'guild']):
             txt = 'to the current guild'
     await ctx.send(f'Synced {len(synced)} commands {txt}')
 
-# "Hidden" commands   
+# 'Secret' commands
+
 @bot.command()
 async def jmac(ctx):
     await ctx.send('Hey guys it\'s me jmac and I really like chairs. You can sit on them, like what the heck! What would we even do without chairs? #chairs\n\n'
@@ -74,15 +75,13 @@ async def zashy(ctx):
     await ctx.send('https://tenor.com/view/di-bad-bad-di-di-directional-influence-smash-gif-21670494')
 
 @bot.command()
-async def doabarrelroll(ctx):
-    await ctx.send('https://tenor.com/view/star-fox-star-fox-64-starfox-do-a-barrel-roll-rick-may-gif-3633857843406436610')
+async def do(ctx: commands.Context):
+    if 'do a barrel roll' in ctx.message.content:
+        await ctx.send('https://tenor.com/view/star-fox-star-fox-64-starfox-do-a-barrel-roll-rick-may-gif-3633857843406436610')
     
 @bot.command()
 async def fakenews(ctx):
     await ctx.send('@matchmaking')
-
-with open('KEYS.json', 'r') as f:
-    keys = json.load(f)
 
 # Event logging    
 @bot.event
@@ -100,5 +99,8 @@ async def on_interaction(interaction: discord.Interaction):
         await cmd_log_channel.send(f"Slash command '{interaction.command.name}' used  in '{interaction.guild}'")
         
 # Bot login
+with open('KEYS.json', 'r') as f:
+    keys = json.load(f)
+    
 if __name__ == '__main__':
     bot.run(keys['TOKEN'])  # API Key from KEYS.json
