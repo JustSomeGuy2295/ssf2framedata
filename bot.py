@@ -74,8 +74,9 @@ async def zashy(ctx):
     await ctx.send('https://tenor.com/view/di-bad-bad-di-di-directional-influence-smash-gif-21670494')
 
 @bot.command()
-async def doabarrelroll(ctx):
-    await ctx.send('https://tenor.com/view/star-fox-star-fox-64-starfox-do-a-barrel-roll-rick-may-gif-3633857843406436610')
+async def do(ctx: commands.Context):
+    if 'do a barrel roll' in ctx.message.content:
+        await ctx.send('https://tenor.com/view/star-fox-star-fox-64-starfox-do-a-barrel-roll-rick-may-gif-3633857843406436610')
     
 @bot.command()
 async def fakenews(ctx):

@@ -43,7 +43,7 @@ class Info(commands.Cog):
             url=link,
             title='Feedback Form',
             description='Use this link to submit feedback to the developers of the bot')
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message(embed=embed, ephemeral=True)
 
 
     @app_commands.command(name='craft')
