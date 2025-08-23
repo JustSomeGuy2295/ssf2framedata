@@ -332,6 +332,23 @@ class Hitboxes(commands.Cog):
         """Sandbag frame data and hitbox info"""
         ssf2_embed, view = ssf2_hitbox('Sandbag', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
+        
+    # ZSS
+    moves = Literal[
+        'Jab', 'Dash Attack',
+        'Down Tilt', 'Up Tilt', 'Forward Tilt',
+        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
+        'Down Smash', 'Up Smash', 'Forward Smash', 
+        'Up Special', 'Neutral Special',
+        'Down Special', 'Side Special',
+        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
+    ]   
+    
+    @app_commands.command(name='zerosuitsamus')
+    async def zerosuitsamus(self, interaction: discord.Interaction, attack: moves):
+        """Zero Suit Samus frame data and hitbox info"""
+        ssf2_embed, view = ssf2_hitbox('Zero Suit Samus', attack, interaction.user)
+        await interaction.response.send_message(embed=ssf2_embed, view=view)
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(Hitboxes(bot))
