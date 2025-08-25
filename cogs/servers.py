@@ -11,8 +11,10 @@ import sqlite3
 
 class Servers(commands.Cog):
     """Send information about different SSF2 servers and gives an invite link."""
+    # Create button class
     
+    # Define embeds, titles, etc
 
 
 async def setup(bot: commands.Bot):
-    await bot.add_cog(Info(bot))
+    await bot.add_cog(Servers(bot))

@@ -332,6 +332,23 @@ class Hitboxes(commands.Cog):
         """Sandbag frame data and hitbox info"""
         ssf2_embed, view = ssf2_hitbox('Sandbag', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
+
+    # Wario
+    moves = Literal[
+        'Jab', 'Dash Attack',
+        'Down Tilt', 'Up Tilt', 'Forward Tilt',
+        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
+        'Down Smash', 'Up Smash', 'Forward Smash', 
+        'Up Special', 'Neutral Special',
+        'Down Special', 'Side Special',
+        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
+    ]   
+    
+    @app_commands.command(name='wario')
+    async def wario(self, interaction: discord.Interaction, attack: moves):
+        """Wario frame data and hitbox info"""
+        ssf2_embed, view = ssf2_hitbox('Wario', attack, interaction.user)
+        await interaction.response.send_message(embed=ssf2_embed, view=view)
         
     # ZSS
     moves = Literal[
