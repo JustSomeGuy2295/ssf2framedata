@@ -42,7 +42,7 @@ def ssf2_charinfo(char: str):
         
         info = {
             'Height': row[0], 'Width': row[1], 
-            'Weight': row[2], 'Gravity': row[3], 'Fall Speed': row[4], 'Max Airspeed': row[10], 'Air Acceleration': row[11], 'Jumpsquat': row[5],
+            'Weight': row[2], 'Gravity': row[3], 'Fall Speed': row[4], 'Max Airspeed': row[11], 'Air Acceleration': row[12], 'Jumpsquat': row[5],
             'Ground-to-Air': row[6], 'Dash Length': row[7], 'Dash Speed': row[8], 'Run Speed': row[9]
         }
 
