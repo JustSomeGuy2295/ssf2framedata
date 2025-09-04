@@ -77,7 +77,7 @@ class Info(commands.Cog):
              'When damage < 40%\n'
              'Aura = 0.8 + damage/200\n\n'
              'When damage < 130%\n'
-             'Aura = 1 + (damage/-40)/300\n\n'
+             'Aura = 1 + (damage-40)/300\n\n'
              'When damage > 130%\n'
              'Aura = 1.3```'
             ))
