@@ -28,7 +28,8 @@ def ssf2_charinfo(char: str):
         SELECT height, width, 
                weight, gravity, fall_speed, jumpsquat,
                g2a, dash_length, initial_dash, run_speed,
-               idle_hurtbox
+               idle_hurtbox,
+               air_speed, air_accel
         FROM stats 
         WHERE char_id=?
     """, (db_char_id,)).fetchall()
@@ -41,7 +42,7 @@ def ssf2_charinfo(char: str):
         
         info = {
             'Height': row[0], 'Width': row[1], 
-            'Weight': row[2], 'Gravity': row[3], 'Fall Speed': row[4], 'Jumpsquat': row[5],
+            'Weight': row[2], 'Gravity': row[3], 'Fall Speed': row[4], 'Max Airspeed': row[10], 'Air Acceleration': row[11], 'Jumpsquat': row[5],
             'Ground-to-Air': row[6], 'Dash Length': row[7], 'Dash Speed': row[8], 'Run Speed': row[9]
         }
 
