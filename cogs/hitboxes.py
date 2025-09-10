@@ -243,7 +243,7 @@ class Hitboxes(commands.Cog):
     ]   
     
     @app_commands.command(name='luffy')
-    async def link(self, interaction: discord.Interaction, attack: moves):
+    async def luffy(self, interaction: discord.Interaction, attack: moves):
         """Luffy frame data and hitbox info"""
         ssf2_embed, view = ssf2_hitbox('Luffy', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
