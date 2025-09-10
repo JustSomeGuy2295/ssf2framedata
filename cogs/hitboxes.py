@@ -163,6 +163,23 @@ class Hitboxes(commands.Cog):
         """Captain Falcon frame data and hitbox info"""
         ssf2_embed, view = ssf2_hitbox('Captain Falcon', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
+        
+    # Ganondorf
+    moves = Literal[
+        'Jab', 'Dash Attack',
+        'Down Tilt', 'Up Tilt', 'Forward Tilt',
+        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
+        'Down Smash', 'Up Smash', 'Forward Smash', 
+        'Up Special', 'Neutral Special',
+        'Down Special', 'Side Special',
+        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
+    ]
+
+    @app_commands.command(name='ganondorf')
+    async def ganondorf(self, interaction: discord.Interaction, attack: moves):
+        """Ganondorf frame data and hitbox info"""
+        ssf2_embed, view = ssf2_hitbox('Ganondorf', attack, interaction.user)
+        await interaction.response.send_message(embed=ssf2_embed, view=view)
     
     # Ichigo
     moves = Literal[
@@ -349,6 +366,40 @@ class Hitboxes(commands.Cog):
     async def sandbag(self, interaction: discord.Interaction, attack: moves):
         """Sandbag frame data and hitbox info"""
         ssf2_embed, view = ssf2_hitbox('Sandbag', attack, interaction.user)
+        await interaction.response.send_message(embed=ssf2_embed, view=view)
+        
+    # Sonic
+    moves = Literal[
+        'Jab', 'Dash Attack',
+        'Down Tilt', 'Up Tilt', 'Forward Tilt',
+        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
+        'Down Smash', 'Up Smash', 'Forward Smash', 
+        'Up Special', 'Neutral Special',
+        'Down Special', 'Side Special',
+        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
+    ]
+
+    @app_commands.command(name='sonic')
+    async def sonic(self, interaction: discord.Interaction, attack: moves):
+        """Sonic frame data and hitbox info"""
+        ssf2_embed, view = ssf2_hitbox('Sonic', attack, interaction.user)
+        await interaction.response.send_message(embed=ssf2_embed, view=view)
+        
+    # Wario
+    moves = Literal[
+        'Jab', 'Dash Attack',
+        'Down Tilt', 'Up Tilt', 'Forward Tilt',
+        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
+        'Down Smash', 'Up Smash', 'Forward Smash', 
+        'Up Special', 'Neutral Special',
+        'Down Special', 'Side Special',
+        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
+    ]
+
+    @app_commands.command(name='wario')
+    async def wario(self, interaction: discord.Interaction, attack: moves):
+        """Wario frame data and hitbox info"""
+        ssf2_embed, view = ssf2_hitbox('Wario', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
         
     # ZSS
