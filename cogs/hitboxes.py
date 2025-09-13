@@ -88,7 +88,7 @@ def ssf2_hitbox(char: str, move: str, user: discord.User):
     hitboxes = cur.execute("""
         SELECT hit, startup, active, endlag, damage, faf, landing_lag, image, 
                sourspot_damage, sweetspot_damage, tipper_damage, notes,
-               intangible, invulnerable, armored, slowmo, angle
+               intangible, invulnerable, armored, slowmo, angle, cooldown
         FROM hitboxes 
         WHERE char_id=? AND move_id=?
     """, (db_char_id, db_move_id)).fetchall()
@@ -106,7 +106,7 @@ def ssf2_hitbox(char: str, move: str, user: discord.User):
             'Startup': row[1], 'Active': row[2], 'Endlag': row[3],
             'Damage': row[4], 'FAF': row[5], 'Landing Lag': row[6],
             'Sweetspot Damage': row[9], 'Tipper Damage': row[10], 'Sourspot Damage': row[8],
-            'Angle': row[16],
+            'Angle': row[16], 'Cooldown': row[17],
             'Intangible': row[12], 'Invulnerable': row[13], 'Armored': row[14],
             'Notes': row[11]
         }
