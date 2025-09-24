@@ -252,7 +252,7 @@ class Hitboxes(commands.Cog):
     moves = Literal[
         'Jab', 'Dash Attack',
         'Down Tilt', 'Up Tilt', 'Forward Tilt',
-        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air', 'Z Aerial',
+        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
         'Down Smash', 'Up Smash', 'Forward Smash', 
         'Up Special', 'Neutral Special',
         'Down Special', 'Side Special',
@@ -269,7 +269,7 @@ class Hitboxes(commands.Cog):
     moves = Literal[
         'Jab', 'Dash Attack',
         'Down Tilt', 'Up Tilt', 'Forward Tilt',
-        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air', 'Z Aerial',
+        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
         'Down Smash', 'Up Smash', 'Forward Smash', 
         'Up Special', 'Neutral Special',
         'Down Special', 'Side Special',

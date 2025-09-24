@@ -17,6 +17,7 @@ As of now not all characters have been added.
 ### Stats Command
 
 Along with hitbox information the bot can also give info about every characters weight, run speed, ground-to-air modifier, etc.
+
 ![Using the stats Bandana Dee command](readme/stats.png)
 
 ### Informational Commands
