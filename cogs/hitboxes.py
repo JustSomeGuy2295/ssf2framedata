@@ -164,7 +164,7 @@ class Hitboxes(commands.Cog):
         ssf2_embed, view = ssf2_hitbox('Captain Falcon', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
         
-    #Ganondorf
+    # Ganondorf
     moves = Literal[
         'Jab', 'Dash Attack',
         'Down Tilt', 'Up Tilt', 'Forward Tilt',
@@ -179,6 +179,23 @@ class Hitboxes(commands.Cog):
     async def ganondorf(self, interaction: discord.Interaction, attack: moves):
         """Ganondorf frame data and hitbox info"""
         ssf2_embed, view = ssf2_hitbox('Ganondorf', attack, interaction.user)
+        await interaction.response.send_message(embed=ssf2_embed, view=view)
+
+    # Goku
+    moves = Literal[
+        'Jab', 'Dash Attack',
+        'Down Tilt', 'Up Tilt', 'Forward Tilt',
+        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
+        'Down Smash', 'Up Smash', 'Forward Smash', 
+        'Up Special', 'Neutral Special',
+        'Down Special', 'Side Special',
+        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
+    ]
+
+    @app_commands.command(name='goku')
+    async def goku(self, interaction: discord.Interaction, attack: moves):
+        """Goku frame data and hitbox info"""
+        ssf2_embed, view = ssf2_hitbox('goku', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
     
     # Ichigo
