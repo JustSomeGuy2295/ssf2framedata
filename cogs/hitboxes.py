@@ -195,7 +195,7 @@ class Hitboxes(commands.Cog):
     @app_commands.command(name='goku')
     async def goku(self, interaction: discord.Interaction, attack: moves):
         """Goku frame data and hitbox info"""
-        ssf2_embed, view = ssf2_hitbox('goku', attack, interaction.user)
+        ssf2_embed, view = ssf2_hitbox('Goku', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
     
     # Ichigo
