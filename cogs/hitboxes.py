@@ -300,21 +300,21 @@ class Hitboxes(commands.Cog):
         await interaction.response.send_message(embed=ssf2_embed, view=view)
 
     # Luigi
-    moves = Literal[
-        'Jab', 'Dash Attack',
-        'Down Tilt', 'Up Tilt', 'Forward Tilt',
-        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
-        'Down Smash', 'Up Smash', 'Forward Smash', 
-        'Up Special', 'Neutral Special',
-        'Down Special', 'Side Special',
-        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
-    ]   
+#    moves = Literal[
+#        'Jab', 'Dash Attack',
+#        'Down Tilt', 'Up Tilt', 'Forward Tilt',
+#        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
+#        'Down Smash', 'Up Smash', 'Forward Smash', 
+#        'Up Special', 'Neutral Special',
+#        'Down Special', 'Side Special',
+#        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
+#    ]   
     
-    @app_commands.command(name='luigi')
-    async def luigi(self, interaction: discord.Interaction, attack: moves):
-        """Luigi frame data and hitbox info"""
-        ssf2_embed, view = ssf2_hitbox('Luigi', attack, interaction.user)
-        await interaction.response.send_message(embed=ssf2_embed, view=view)
+#    @app_commands.command(name='luigi')
+#    async def luigi(self, interaction: discord.Interaction, attack: moves):
+#        """Luigi frame data and hitbox info"""
+#        ssf2_embed, view = ssf2_hitbox('Luigi', attack, interaction.user)
+#        await interaction.response.send_message(embed=ssf2_embed, view=view)
 
     # Mario
     moves = Literal[
