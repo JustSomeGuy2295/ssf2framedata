@@ -147,7 +147,7 @@ class Hitboxes(commands.Cog):
         ssf2_embed, view = ssf2_hitbox('Bandana Dee', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
     
-    #Captain Falcon
+    # Captain Falcon
     moves = Literal[
         'Jab', 'Dash Attack',
         'Down Tilt', 'Up Tilt', 'Forward Tilt',
@@ -162,6 +162,23 @@ class Hitboxes(commands.Cog):
     async def captainfalcon(self, interaction: discord.Interaction, attack: moves):
         """Captain Falcon frame data and hitbox info"""
         ssf2_embed, view = ssf2_hitbox('Captain Falcon', attack, interaction.user)
+        await interaction.response.send_message(embed=ssf2_embed, view=view)
+        
+    # Donkey Kong
+    moves = Literal[
+        'Jab', 'Dash Attack',
+        'Down Tilt', 'Up Tilt', 'Forward Tilt',
+        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
+        'Down Smash', 'Up Smash', 'Forward Smash', 
+        'Up Special', 'Neutral Special',
+        'Down Special', 'Side Special',
+        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
+    ]
+
+    @app_commands.command(name='donkeykong')
+    async def donkeykong(self, interaction: discord.Interaction, attack: moves):
+        """Donkey Kong frame data and hitbox info"""
+        ssf2_embed, view = ssf2_hitbox('Donkey Kong', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
         
     # Ganondorf
