@@ -86,9 +86,9 @@ def ssf2_hitbox(char: str, move: str, user: discord.User):
     icon = character_data[1]
 
     hitboxes = cur.execute("""
-        SELECT hit, startup, active, endlag, damage, faf, landing_lag, image, 
+        SELECT hit, startup, active, endlag, damage, first_actionable_frame, landing_lag, image, 
                sourspot_damage, sweetspot_damage, tipper_damage, notes,
-               intangible, invulnerable, armored, slowmo, angle, cooldown
+               intangible, invulnerable, armored, slowmo, angle, cooldown, autocancel_window
         FROM hitboxes 
         WHERE char_id=? AND move_id=?
     """, (db_char_id, db_move_id)).fetchall()
@@ -104,7 +104,7 @@ def ssf2_hitbox(char: str, move: str, user: discord.User):
         
         info = {
             'Startup': row[1], 'Active': row[2], 'Endlag': row[3],
-            'Damage': row[4], 'FAF': row[5], 'Landing Lag': row[6],
+            'Damage': row[4], 'FAF': row[5], 'Landing Lag': row[6], 'Autocancel': row[18],
             'Sweetspot Damage': row[9], 'Tipper Damage': row[10], 'Sourspot Damage': row[8],
             'Angle': row[16], 'Cooldown': row[17],
             'Intangible': row[12], 'Invulnerable': row[13], 'Armored': row[14],
@@ -231,6 +231,8 @@ class Hitboxes(commands.Cog):
         """Ichigo frame data and hitbox info"""
         ssf2_embed, view = ssf2_hitbox('Ichigo', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
+
+    # Isaac
         
     moves = Literal[
         'Jab', 'Dash Attack',
@@ -300,21 +302,21 @@ class Hitboxes(commands.Cog):
         await interaction.response.send_message(embed=ssf2_embed, view=view)
 
     # Luigi
-#    moves = Literal[
-#        'Jab', 'Dash Attack',
-#        'Down Tilt', 'Up Tilt', 'Forward Tilt',
-#        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
-#        'Down Smash', 'Up Smash', 'Forward Smash', 
-#        'Up Special', 'Neutral Special',
-#        'Down Special', 'Side Special',
-#        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
-#    ]   
-    
-#    @app_commands.command(name='luigi')
-#    async def luigi(self, interaction: discord.Interaction, attack: moves):
-#        """Luigi frame data and hitbox info"""
-#        ssf2_embed, view = ssf2_hitbox('Luigi', attack, interaction.user)
-#        await interaction.response.send_message(embed=ssf2_embed, view=view)
+    moves = Literal[
+        'Jab', 'Dash Attack',
+        'Down Tilt', 'Up Tilt', 'Forward Tilt',
+        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
+        'Down Smash', 'Up Smash', 'Forward Smash', 
+        'Up Special', 'Neutral Special',
+        'Down Special', 'Side Special',
+        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
+    ]   
+   
+    @app_commands.command(name='luigi')
+    async def luigi(self, interaction: discord.Interaction, attack: moves):
+        """Luigi frame data and hitbox info"""
+        ssf2_embed, view = ssf2_hitbox('Luigi', attack, interaction.user)
+        await interaction.response.send_message(embed=ssf2_embed, view=view)
 
     # Mario
     moves = Literal[
@@ -331,6 +333,23 @@ class Hitboxes(commands.Cog):
     async def mario(self, interaction: discord.Interaction, attack: moves):
         """Mario frame data and hitbox info"""
         ssf2_embed, view = ssf2_hitbox('Mario', attack, interaction.user)
+        await interaction.response.send_message(embed=ssf2_embed, view=view)
+        
+    # Marth
+    moves = Literal[
+        'Jab', 'Dash Attack',
+        'Down Tilt', 'Up Tilt', 'Forward Tilt',
+        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
+        'Down Smash', 'Up Smash', 'Forward Smash', 
+        'Up Special', 'Neutral Special',
+        'Down Special', 'Side Special',
+        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
+    ]   
+    
+    @app_commands.command(name='marth')
+    async def marth(self, interaction: discord.Interaction, attack: moves):
+        """Marth frame data and hitbox info"""
+        ssf2_embed, view = ssf2_hitbox('Marth', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
         
     # Mr. Game and Watch
