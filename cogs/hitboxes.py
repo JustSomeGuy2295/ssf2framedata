@@ -480,7 +480,8 @@ class Hitboxes(commands.Cog):
         'Down Smash', 'Up Smash', 'Forward Smash', 
         'Up Special', 'Neutral Special',
         'Down Special', 'Side Special',
-        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
+        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw',
+        'Taunt'
     ]   
     
     @app_commands.command(name='simon')
@@ -504,6 +505,23 @@ class Hitboxes(commands.Cog):
     async def sonic(self, interaction: discord.Interaction, attack: moves):
         """Sonic frame data and hitbox info"""
         ssf2_embed, view = ssf2_hitbox('Sonic', attack, interaction.user)
+        await interaction.response.send_message(embed=ssf2_embed, view=view)
+
+    # Waluigi
+    moves = Literal[
+        'Jab', 'Dash Attack',
+        'Down Tilt', 'Up Tilt', 'Forward Tilt',
+        'Neutral Air', 'Down Air', 'Up Air', 'Forward Air', 'Back Air',
+        'Down Smash', 'Up Smash', 'Forward Smash', 
+        'Up Special', 'Neutral Special',
+        'Down Special', 'Side Special',
+        'Grab', 'Forward Throw', 'Back Throw', 'Up Throw', 'Down Throw'
+    ]   
+    
+    @app_commands.command(name='waluigi')
+    async def waluigi(self, interaction: discord.Interaction, attack: moves):
+        """Waluigi frame data and hitbox info"""
+        ssf2_embed, view = ssf2_hitbox('Waluigi', attack, interaction.user)
         await interaction.response.send_message(embed=ssf2_embed, view=view)
         
     # Wario
